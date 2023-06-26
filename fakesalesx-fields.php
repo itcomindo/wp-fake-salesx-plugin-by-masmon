@@ -10,10 +10,14 @@ function fakesalesx_register_fields()
     Container::make('theme_options', 'FakeSalesX')
         ->set_page_parent('options-general.php')
         ->add_fields([
-            Field::make('checkbox', 'fakesalesx_enabledisable', 'Enable/Disable Fake Sales X')
+
+            //=========================Checkbox to enable or disable FSX=========================
+            Field::make('checkbox', 'fakesalesx_enabledisable', 'Enable Fake Sales X')
                 ->set_option_value('yes')
                 ->set_default_value(false)
-                ->set_help_text('Enable/Disable Fake Sales X'),
+                ->set_help_text('Pilih untuk Enable Fake Sales X'),
+
+            //=========================FSX position=========================
             Field::make('select', 'fakesalesx_position', 'Position')
                 ->add_options([
                     'bottom-left' => 'Bottom Left',
@@ -23,6 +27,39 @@ function fakesalesx_register_fields()
                     'top-center' => 'Top center',
                     'top-right' => 'Top Right',
                 ]),
+
+            //=========================AutoPlay Checkbox=========================
+            Field::make('checkbox', 'fakesalesx_autoplay', 'Auto Play')
+                ->set_option_value('yes')
+                ->set_default_value(true)
+                ->set_help_text('Pilih untuk Enable Auto Play'),
+
+
+            //=========================FSX transition duration input type number=========================
+            Field::make('text', 'fakesalesx_transition_duration', 'Durasi perpindahan antar item')
+                ->set_attribute('type', 'number')
+                ->set_default_value(3000)
+                ->set_help_text('masukan hanya angka dalam milisecond e.g ketik 1000 untuk 1 detik ketik 3000 = 3 detik')
+                ->set_conditional_logic([
+                    [
+                        'field' => 'fakesalesx_autoplay',
+                        'value' => true,
+                    ]
+                ]),
+
+
+
+            /**
+             *=========================
+             *NAME: FakeSalesX Item Start
+             *=========================
+             */
+
+            //=========================Seperator=========================
+            Field::make('separator', 'fsxitemsep', 'FakeSalesX Item')
+                ->set_classes('cbSeparator'),
+
+            //=========================FakeSalesX Item=========================
             Field::make('complex', 'fakesalesx_complex', 'Fake Sales X Items')
                 ->set_layout('tabbed-horizontal')
                 ->set_min(3)

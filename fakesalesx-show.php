@@ -1,12 +1,40 @@
 <?php
 defined('ABSPATH') || exit;
 
+/**
+ *=========================
+ *NAME: Enable/Disable Fake Sales X
+ *=========================
+ */
+
+function mm_enable_fakesalesx_by_masmon()
+{
+    $fakesalesx_enabledisable = carbon_get_theme_option('fakesalesx_enabledisable');
+    if ($fakesalesx_enabledisable == true) {
+        echo fakesalesx_show();
+    } else {
+        // dont show
+    }
+}
+add_action('wp_footer', 'mm_enable_fakesalesx_by_masmon', 101);
+
+/**
+ *=========================
+ *NAME: Show Fake Sales X
+ *=========================
+ */
 
 function fakesalesx_show()
 {
     $fakesalesx_position = carbon_get_theme_option('fakesalesx_position');
     $fakesalesx_complex = carbon_get_theme_option('fakesalesx_complex');
-    echo '<div id="fsalesxpr" class="fsalesx-' . $fakesalesx_position . '">';
+    $fakesalesx_autoplay = carbon_get_theme_option('fakesalesx_autoplay');
+    if ($fakesalesx_autoplay == false) {
+        $fsxdurations = "false";
+    } else {
+        $fsxdurations = carbon_get_theme_option('fakesalesx_transition_duration');
+    }
+    echo '<div id="fsalesxpr" class="fsalesx-' . $fakesalesx_position . '" data-duration="' . $fsxdurations . '">';
     echo '<div class="fsalesx">';
     foreach ($fakesalesx_complex as $fakesalesx) {
         // content
@@ -59,4 +87,3 @@ function fakesalesx_show()
     echo '</div>';
     echo '</div>';
 }
-add_action('wp_footer', 'fakesalesx_show');
