@@ -1,11 +1,30 @@
---Features--
-1. Dynamic show fake sales
-2. Conditional show fake sales
+WP Fale SalesX adalah plugin gratis untuk menampilkan notifikasi (popup) 'Fake Sales' didalam situs WordPress Anda.
 
+Dengan menggunakan plugin WP Fake SalesX Anda bisa mendongkrak jumlah sales. Fungsi utama dari plugin fake sales ini adalah untuk memberikan nilai tambah untuk situs yang menjual produk atau jasa karena berisi daftar user yang sudah membeli produk atau jasa yang ditawarkan.
 
---Installation--
-- Download, install and activate Carbon Fields plugin (only if you don't have Carbon Fields intalled and activate in your Wordprss)
-- Activate Carbon Fields (only if Carbon Fields plugin is installed but deactivated)
-- Download. install and activate FakeSalesX plugin
-- Customizing
-- Done
+Fitur WP Multiple Whatsapp by Masmon
+Plugin ini memiliki sejumlah fitur seperti:
+
+Unlimited falke sales
+Custom position
+Product name
+Content
+Product URL
+Custom image
+Price
+Discount
+Buyer name
+Date sales
+dll
+
+==Instalasi==
+
+Plugin ini membutuhkan plugin Carbon Fields versi V3.6.0 untuk di install. (wajib) untuk mendownload plugin tersebut terlebih dahulu. Untuk instalasi ikuti petunjuk berikut:
+
+- Jika WordPress Anda belum terinstall plugin Carbon Fields silahkan untuk mendownloadnya disini
+- Install dan Aktifkan Carbon Fields
+- Download plugin WP Fake SalesX by Masmon -> install -> aktifkan
+- Isi konfigurasi yang ada pada menu setting -> FakeSalesX options sesuai selera dan kebutuhan Anda
+
+==support==
+https://budiharyono.com/repo/plugins/70/wp-fake-salesx-by-masmon/
