@@ -28,3 +28,10 @@ Plugin ini membutuhkan plugin Carbon Fields versi V3.6.0 untuk di install. (waji
 
 ==support==
 https://budiharyono.com/repo/plugins/70/wp-fake-salesx-by-masmon/
+https://budiharyono.com/jasa-pembuatan-web/
+
+==Demo==
+https://jualakuntiktok.com/
+
+==Download Carbon Fields==
+https://carbonfields.net/release-archive/
