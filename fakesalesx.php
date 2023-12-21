@@ -17,18 +17,29 @@ defined('ABSPATH') || exit;
 define('FAKESALESX_DIR', plugin_dir_path(__FILE__));
 
 
-function crb_load()
+
+/**
+ *=========================
+ *NAME: Load Carbon Fields
+ *=========================
+ */
+function mm_falesalesx_call_carbon_fields()
 {
     require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
     \Carbon_Fields\Carbon_Fields::boot();
 }
-// add_action('after_setup_theme', 'crb_load');
 
 
+
+
+/**
+ * Fake Sales X Loaded
+ */
 function fakesalesx_plugin_loaded()
 {
-    if (!function_exists('carbon_fields_boot_plugin')) {
-        crb_load();
+    if (!function_exists('carbon_fields_boot_plugin')) { // if carbon fields not installed or activated
+        // load carbon fields
+        mm_falesalesx_call_carbon_fields();
     }
 }
 add_action('plugins_loaded', 'fakesalesx_plugin_loaded');

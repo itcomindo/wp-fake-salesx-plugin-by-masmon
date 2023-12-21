@@ -41,8 +41,7 @@ function fakesalesx_show()
         $fscontent = $fakesalesx['fakesalesx_content'];
         // product name
         $fsproductname = $fakesalesx['fakesalesx_product_name'];
-        // url product
-        $fsurl = $fakesalesx['fakesalesx_url'];
+
         // image product
         $fsimage = $fakesalesx['fakesalesx_image'];
         if (empty($fsimage)) {
@@ -68,18 +67,46 @@ function fakesalesx_show()
         $fsdate = date('d F Y', strtotime($fsdate));
         //discount
         $fsdiscount = $fakesalesx['fakesalesx_discount'];
-        if (empty($fsdiscount)) {
-            $fsdiscount = '';
+
+        //if customizing
+
+        if (carbon_get_theme_option('fakesalesx_customizing')) {
+
+            if (empty($fsdiscount)) {
+                $fsdiscount = '';
+            } else {
+                $fsdiscount = '<span class="fsbold"> discount ' . $fsdiscount . '</span>';
+            }
+            //font size
+            if (carbon_get_theme_option('fakesalesx_font_size')) {
+                $fontsize = carbon_get_theme_option('fakesalesx_font_size');
+            }
+            //background
+            if (carbon_get_theme_option('fakesalesx_background')) {
+                $background = carbon_get_theme_option('fakesalesx_background');
+            }
+            //color
+            if (carbon_get_theme_option('fakesalesx_text_color')) {
+                $color = carbon_get_theme_option('fakesalesx_text_color');
+            }
+            //link color
+            if (carbon_get_theme_option('fakesalesx_link_color')) {
+                $linkcolor = carbon_get_theme_option('fakesalesx_link_color');
+                $fsurl = '<a href="' . $fakesalesx['fakesalesx_url'] . '" style="color:' . $linkcolor . ';">Disini</a>';
+            } else {
+                $fsurl = '<a href="' . $fakesalesx['fakesalesx_url'] . '">Disini</a>';
+            }
+            $custom_style = 'style="font-size:' . $fontsize . 'px; background:' . $background . '; color:' . $color . ';"';
         } else {
-            $fsdiscount = '<span class="fsxred fsbold"> discount ' . $fsdiscount . '</span>';
+            $custom_style = '';
         }
 ?>
-        <div class="fsalesxitem">
+        <div class="fsalesxitem" <?php echo $custom_style; ?>>
             <div class="fsalesxleft">
                 <?php echo $fsimage; ?>
             </div>
             <div class="fsalesxright">
-                <span>Pada <?php echo $fsdate . ', ' . $fsname . ' di ' . $fscity . ' ' . $fscontent . '<b> ' . $fsproductname . ' ' . $fsprice . '</b>' . $fsdiscount . ' Cek produk <a href="' . $fsurl ?>">Disini</a></span>
+                <span>Pada <?php echo $fsdate . ', ' . $fsname . ' di ' . $fscity . ' ' . $fscontent . '<b> ' . $fsproductname . ' ' . $fsprice . '</b>' . $fsdiscount . ' Cek produk ' . $fsurl ?></span>
             </div>
         </div>
 <?php

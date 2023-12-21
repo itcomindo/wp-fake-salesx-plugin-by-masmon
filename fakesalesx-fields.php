@@ -57,7 +57,7 @@ function fakesalesx_register_fields()
 
             //=========================Seperator=========================
             Field::make('separator', 'fsxitemsep', 'FakeSalesX Item')
-                ->set_classes('cbSeparator'),
+                ->set_classes('cbseparator'),
 
             //=========================FakeSalesX Item=========================
             Field::make('complex', 'fakesalesx_complex', 'Fake Sales X Items')
@@ -100,6 +100,57 @@ function fakesalesx_register_fields()
                     Field::make('text', 'fakesalesx_discount', 'Discount')
                         ->set_help_text('e.g. 50%')
                         ->set_attribute('placeholder', 'e.g. 50%'),
-                ])
+                ]),
+
+
+            Field::make('separator', 'fakesalesxstylingsep', 'Styling')
+                ->set_classes('cbseparator'),
+
+            //customizing option checkbox
+            Field::make('checkbox', 'fakesalesx_customizing', 'Customizing')
+                ->set_option_value('yes')
+                ->set_default_value(false)
+                ->set_help_text('Pilih untuk Enable Customizing'),
+
+            //font size input type number
+            Field::make('text', 'fakesalesx_font_size', 'Font Size')
+                ->set_attribute('type', 'number')
+                ->set_default_value(14)
+                ->set_help_text('masukan hanya angka dalam px e.g ketik 14 untuk 14px'),
+
+            //background color
+            Field::make('color', 'fakesalesx_background', 'Background Color')
+                ->set_default_value('#333333'),
+
+            //text color
+            Field::make('color', 'fakesalesx_text_color', 'Text Color')
+                ->set_default_value('#ffffff'),
+
+            //link color
+            Field::make('color', 'fakesalesx_link_color', 'Link Color')
+                ->set_default_value('#ffffff'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ]);
 }
