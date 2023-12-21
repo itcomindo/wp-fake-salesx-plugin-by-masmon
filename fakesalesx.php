@@ -13,31 +13,26 @@ defined('ABSPATH') || exit;
  */
 
 
+//define plugin directory
+define('FAKESALESX_DIR', plugin_dir_path(__FILE__));
 
-add_action('plugins_loaded', 'fakesalesx_plugin_loaded');
+
+function crb_load()
+{
+    require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
+    \Carbon_Fields\Carbon_Fields::boot();
+}
+// add_action('after_setup_theme', 'crb_load');
+
+
 function fakesalesx_plugin_loaded()
 {
     if (!function_exists('carbon_fields_boot_plugin')) {
-        // If Carbon Fields is not active, deactivate your plugin and display an error message
-        add_action('admin_notices', 'fakesalesx_plugin_activation_error');
-        add_action('admin_init', 'fakesalesx_deactivate_plugin');
+        crb_load();
     }
 }
-function fakesalesx_plugin_activation_error()
-{
-    echo '<div class="error"><p>You need to install and activate the Carbon Fields plugin first.</p></div>';
-}
-function fakesalesx_deactivate_plugin()
-{
-    deactivate_plugins(plugin_basename(__FILE__));
-}
-add_action('admin_init', 'fakesalesx_check_carbon_fields_deactivation');
-function fakesalesx_check_carbon_fields_deactivation()
-{
-    if (!function_exists('carbon_fields_boot_plugin')) {
-        deactivate_plugins(plugin_basename(__FILE__));
-    }
-}
+add_action('plugins_loaded', 'fakesalesx_plugin_loaded');
+
 
 
 /**
